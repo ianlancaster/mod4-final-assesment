@@ -47,3 +47,7 @@ button:hover {
   background-color: aquamarine;
   cursor: pointer;
 }
+
+.grudge-container {
+  color: #444444;
+}

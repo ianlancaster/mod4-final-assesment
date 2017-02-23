@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import Grudge from './Grudge'
 
 class App extends Component {
   constructor () {
     super()
-    this.state = {}
+    this.state = {
+      grudges: []
+    }
+
+    this.submitGrudge = this.submitGrudge.bind(this)
   }
 
   submitGrudge(e) {
@@ -23,7 +28,7 @@ class App extends Component {
       body: JSON.stringify(grudge)
     })
       .then(response => response.json())
-      .then(json => console.log(json))
+      .then(grudges => this.setState({ grudges }))
       .catch(err => console.log('error: ', err))
 
     inputs.forEach(input => input.value = '')
@@ -58,9 +63,12 @@ class App extends Component {
           />
           <button type="submit">Remember Forever</button>
         </form>
+        <section className="grudge-container">
+          {this.state.grudges.map((grudge, i) => <Grudge key={i} data={grudge} />)}
+        </section>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
