@@ -67,6 +67,11 @@ class App extends Component {
 
   render() {
     if (this.state.listView) {
+      const grudges = this.state.grudges
+      const allCount = grudges.length
+      const forgivenCount = grudges.filter(grudge => grudge.forgiven).length
+      const grudgeCount = grudges.filter(grudge => !grudge.forgiven).length
+
       return (
         <div className="App">
           <form onSubmit={this.submitGrudge}>
@@ -95,8 +100,14 @@ class App extends Component {
             />
             <button type="submit">Remember Forever</button>
           </form>
+          <section className="grudge-overview">
+            <h2>Your Grudge Box</h2>
+            <h3>Total grudges: {allCount}</h3>
+            <h3>Forgiven: {forgivenCount}</h3>
+            <h3>Not Forgiven: {grudgeCount}</h3>
+          </section>
           <section className="grudge-container">
-            {this.state.grudges.map((grudge, i) => (
+            {grudges.map((grudge, i) => (
               <h4
                 key={i}
                 onClick={this.viewGrudgeDetail}

@@ -48,6 +48,12 @@ button:hover {
   cursor: pointer;
 }
 
+.grudge-overview {
+  color: #444444;
+  border-bottom: solid 1px #444444;
+  padding: 20px;
+}
+
 .grudge-container {
   color: #444444;
 }
