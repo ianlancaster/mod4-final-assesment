@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    fetch('/api/grudges')
+    fetch('http://localhost:3001/api/grudges')
       .then(response => response.json())
       .then(grudges => this.setState({ grudges }))
       .catch(err => console.log('error: ', err))
@@ -37,7 +37,7 @@ class App extends Component {
       forgiven: false
     }
 
-    fetch('/api/grudge', {
+    fetch('http://localhost:3001/api/grudge', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(grudge)
@@ -50,7 +50,7 @@ class App extends Component {
   }
 
   updateGrudge(grudge) {
-    fetch('/api/grudge', {
+    fetch('http://localhost:3001/api/grudge', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(grudge)
