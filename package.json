@@ -47,11 +47,14 @@
     "whatwg-fetch": "2.0.2"
   },
   "dependencies": {
+    "body-parser": "^1.16.1",
+    "concurrently": "^3.3.0",
+    "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "concurrently \"node scripts/start.js\" \"nodemon server\"",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
