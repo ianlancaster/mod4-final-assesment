@@ -8,7 +8,9 @@ class App extends Component {
     this.state = {
       grudges: [],
       listView: true,
-      currentGrudge: null
+      currentGrudge: null,
+      sortdate: false,
+      sortname: false
     }
 
     this.submitGrudge = this.submitGrudge.bind(this)
@@ -65,6 +67,22 @@ class App extends Component {
     })
   }
 
+  sortGrudges(option) {
+    let sortOption = this.state[`sort${option}`]
+
+    if (sortOption) {
+      this.setState({
+        grudges: this.state.grudges.sort((a, b) => a[option] < b[option] ? 1 : -1),
+        [`sort${option}`]: !sortOption
+      })
+    } else {
+      this.setState({
+        grudges: this.state.grudges.sort((a, b) => a[option] > b[option] ? 1 : -1),
+        [`sort${option}`]: !sortOption
+      })
+    }
+  }
+
   render() {
     if (this.state.listView) {
       const grudges = this.state.grudges
@@ -73,40 +91,44 @@ class App extends Component {
       const grudgeCount = grudges.filter(grudge => !grudge.forgiven).length
 
       return (
-        <div className="App">
+        <div className='App'>
           <form onSubmit={this.submitGrudge}>
             <h2>Add Grudge</h2>
-            <label htmlFor="name">Name of person who offended you:</label>
+            <label htmlFor='name'>Name of person who offended you:</label>
             <input
-              type="text"
-              className="text-input"
-              placeholder="Name"
-              name="name"
+              type='text'
+              className='text-input'
+              placeholder='Name'
+              name='name'
               required
             />
-            <label htmlFor="offense">What did they do?</label>
+            <label htmlFor='offense'>What did they do?</label>
             <input
-              type="text"
-              className="text-input"
-              placeholder="Sneezed during my presentation"
-              name="offense"
+              type='text'
+              className='text-input'
+              placeholder='Sneezed during my presentation'
+              name='offense'
               required
             />
-            <label htmlFor="date">When did the offense occur?</label>
+            <label htmlFor='date'>When did the offense occur?</label>
             <input
-              type="date"
-              name="date"
+              type='date'
+              name='date'
               required
             />
-            <button type="submit">Remember Forever</button>
+            <button type='submit'>Remember Forever</button>
           </form>
-          <section className="grudge-overview">
+          <section className='grudge-overview'>
             <h2>Your Grudge Box</h2>
             <h3>Total grudges: {allCount}</h3>
             <h3>Forgiven: {forgivenCount}</h3>
             <h3>Not Forgiven: {grudgeCount}</h3>
+            <section className='sort-options'>
+              <button onClick={() => this.sortGrudges('name')}>Sort By Name</button>
+              <button onClick={() => this.sortGrudges('date')}>Sort By Date</button>
+            </section>
           </section>
-          <section className="grudge-container">
+          <section className='grudge-container'>
             {grudges.map((grudge, i) => (
               <h4
                 key={i}
