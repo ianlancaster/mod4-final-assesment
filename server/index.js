@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const server = require('http').Server(app)
+const path = require('path')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -12,6 +13,13 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
+
+app.use(express.static(path.resolve(__dirname, '.', 'build')))
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '.', 'build', 'index.html'))
+})
+
 
 const mockGrudges = [
     {
