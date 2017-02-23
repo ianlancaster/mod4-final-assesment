@@ -26,7 +26,9 @@ class App extends Component {
     const grudge = {
       name: inputs[0].value,
       offense: inputs[1].value,
-      date: inputs[2].value
+      date: inputs[2].value,
+      id: Date.now(),
+      forgiven: false
     }
 
     fetch('http://localhost:3001/api/grudge', {
