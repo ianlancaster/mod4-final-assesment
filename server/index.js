@@ -16,7 +16,7 @@ app.locals.grudges = []
 const grudges = app.locals.grudges
 
 app.post('/api/grudge', (req, res) => {
-  grudges.push(req.body.grudge)
+  grudges.push(req.body)
   res.json(grudges)
 })
 

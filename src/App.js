@@ -2,6 +2,33 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+  constructor () {
+    super()
+    this.state = {}
+  }
+
+  submitGrudge(e) {
+    e.preventDefault()
+    const inputs = [].slice.call(e.target.children).filter(node => node.nodeName === 'INPUT')
+
+    const grudge = {
+      name: inputs[0].value,
+      offense: inputs[1].value,
+      date: inputs[2].value
+    }
+
+    fetch('http://localhost:3001/api/grudge', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(grudge)
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(err => console.log('error: ', err))
+
+    inputs.forEach(input => input.value = '')
+  }
+
   render() {
     return (
       <div className="App">
