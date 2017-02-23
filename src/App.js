@@ -54,7 +54,7 @@ class App extends Component {
       body: JSON.stringify(grudge)
     })
       .then(response => response.json())
-      .then(grudges => this.setState({ grudges }))
+      .then(grudges => this.setState({ grudges, listView: true }))
       .catch(err => console.log('error: ', err))
   }
 
@@ -100,6 +100,7 @@ class App extends Component {
               <h4
                 key={i}
                 onClick={this.viewGrudgeDetail}
+                style={{ color: `${grudge.forgiven ? 'cadetblue' : 'indianred'}` } }
               >{grudge.name}</h4>
             ))}
           </section>

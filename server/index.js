@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
@@ -37,10 +38,19 @@ const mockGrudges = [
 ]
 
 app.locals.grudges = mockGrudges
-const grudges = app.locals.grudges
+let grudges = app.locals.grudges
 
 app.post('/api/grudge', (req, res) => {
   grudges.push(req.body)
+  res.json(grudges)
+})
+
+app.put('/api/grudge', (req, res) => {
+  grudges.forEach(grudge => {
+    if (grudge.id === req.body.id) {
+      grudge.forgiven = !grudge.forgiven
+    }
+  })
   res.json(grudges)
 })
 

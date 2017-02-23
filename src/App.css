@@ -51,3 +51,7 @@ button:hover {
 .grudge-container {
   color: #444444;
 }
+
+h4:hover {
+  cursor: pointer;
+}
