@@ -12,8 +12,15 @@ app.use((req, res, next) => {
   next()
 })
 
-app.set('port', process.env.PORT || 3001)
+app.locals.grudges = []
+const grudges = app.locals.grudges
 
+app.post('/api/grudge', (req, res) => {
+  grudges.push(req.body.grudge)
+  res.json(grudges)
+})
+
+app.set('port', process.env.PORT || 3001)
 
 server.listen(app.get('port'), () => {
   console.log(`Express server is running on ${app.get('port')}.`)
