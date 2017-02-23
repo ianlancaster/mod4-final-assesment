@@ -20,6 +20,10 @@ app.post('/api/grudge', (req, res) => {
   res.json(grudges)
 })
 
+app.get('/api/grudge', (req, res) => {
+  res.json(grudges)
+})
+
 app.set('port', process.env.PORT || 3001)
 
 server.listen(app.get('port'), () => {

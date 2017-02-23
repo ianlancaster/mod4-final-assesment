@@ -12,6 +12,13 @@ class App extends Component {
     this.submitGrudge = this.submitGrudge.bind(this)
   }
 
+  componentWillMount() {
+    fetch('http://localhost:3001/api/grudge')
+      .then(response => response.json())
+      .then(grudges => this.setState({ grudges }))
+      .catch(err => console.log('error: ', err))
+  }
+
   submitGrudge(e) {
     e.preventDefault()
     const inputs = [].slice.call(e.target.children).filter(node => node.nodeName === 'INPUT')
