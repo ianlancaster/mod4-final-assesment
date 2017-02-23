@@ -7,21 +7,23 @@ class App extends Component {
       <div className="App">
         <form onSubmit={this.submitGrudge}>
           <h2>Add Grudge</h2>
-          <label for="name">Name of person who offended you:</label>
+          <label htmlFor="name">Name of person who offended you:</label>
           <input
             type="text"
+            className="text-input"
             placeholder="Name"
             name="name"
             required
           />
-          <label for="offense">What did they do?</label>
+          <label htmlFor="offense">What did they do?</label>
           <input
-            type="offense"
+            type="text"
+            className="text-input"
             placeholder="Sneezed during my presentation"
             name="offense"
             required
           />
-          <label for="date">When did the offense occur?</label>
+          <label htmlFor="date">When did the offense occur?</label>
           <input
             type="date"
             name="date"
