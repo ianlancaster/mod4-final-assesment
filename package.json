@@ -50,10 +50,13 @@
     "body-parser": "^1.16.1",
     "chai": "^3.5.0",
     "concurrently": "^3.3.0",
+    "enzyme": "^2.7.1",
     "express": "^4.14.1",
     "nodemon": "^1.11.0",
     "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
+    "sinon": "^1.17.7",
     "supertest": "^3.0.0"
   },
   "scripts": {

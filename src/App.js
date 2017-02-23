@@ -22,7 +22,7 @@ class App extends Component {
     fetch('http://localhost:3001/api/grudges')
       .then(response => response.json())
       .then(grudges => this.setState({ grudges }))
-      .catch(err => console.log('error: ', err))
+      .catch(err => console.log('error: ', 'there was an error fetching your grudges (disregard if in testing)'))
   }
 
   submitGrudge(e) {
