@@ -3,9 +3,14 @@ html {
   color: whitesmoke;
 }
 
+.App {
+  max-width: 700px;
+  display: block;
+  margin: auto;
+}
+
 form {
   background-color: cadetblue;
-  max-width: 700px;
   margin: auto;
   padding: 50px;
 }
