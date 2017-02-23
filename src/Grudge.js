@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './grudge.css'
 
 class Grudge extends Component {
   constructor () {

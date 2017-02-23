@@ -44,7 +44,7 @@ app.post('/api/grudge', (req, res) => {
   res.json(grudges)
 })
 
-app.get('/api/grudge', (req, res) => {
+app.get('/api/grudges', (req, res) => {
   res.json(grudges)
 })
 
